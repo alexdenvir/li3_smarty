@@ -13,6 +13,7 @@ class Smarty extends \lithium\template\view\Renderer {
 
         $this->_smarty->compile_dir = \LITHIUM_APP_PATH . "/resources/templates_c";
         $this->_smarty->cache_dir = \LITHIUM_APP_PATH . "/resources/cache";
+        $this->_smarty->addPluginsDir(\LITHIUM_APP_PATH . "/extensions/smarty");
 
         $defaults = array('classes' => array());
         parent::__construct($config + $defaults);
