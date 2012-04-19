@@ -31,8 +31,9 @@
 			}
 		// No params are given
 		} else {
+			$params = array();
 			// If the option array is given (likely it's not optional in this case)
-			if(is_array($options)){
+			if(isset($options) AND is_array($options)){
 				$params = array($options);
 			}
 		}
