@@ -97,7 +97,7 @@ I wont get into how or why you'd write these so check out the [smarty plugin doc
 ## Lithium Helpers
 This ... was tricky.
 
-Smarty disables your ability to use PHP in your views and no [longer supports an "escape" block function](http://www.smarty.net/docs/en/language.function.php.tpl) that allows you to add raw PHP, therefore extra effort was required to expose Lithium PHP view functionality to smarty.
+Smarty disables your ability to use PHP in your views and no [longer supports the "escape" block function](http://www.smarty.net/docs/en/language.function.php.tpl) that would allow you to add raw PHP. Therefore extra effort was required to expose Lithium PHP view functionality to smarty.
 
 To lose lithium php helpers is the same as losing both feet and 4 fingers, including both thumbs ... I __HAD__ to come up with a way to expose helpers to smarty templates.
 
