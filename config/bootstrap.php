@@ -26,6 +26,10 @@ Media::type('default', null, array(
             LITHIUM_APP_PATH . '/views/{:controller}/{:template}.{:type}.tpl',
             '{:library}/views/{:controller}/{:template}.{:type}.tpl',
         ),
+        'element' => array(
+            LITHIUM_APP_PATH . '/views/elements/{:template}.html.tpl', 
+            '{:library}/views/elements/{:template}.html.tpl'
+        ),
         'layout' => false
     )
 ));
