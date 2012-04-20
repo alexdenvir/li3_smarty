@@ -163,7 +163,7 @@ __Smarty Element__
 	...
 ~~~
 
-### Some Notes
+#### Some Notes about Smarty elements
 
 1. The `file` parameter is the name of the element, the file extension `.html.tpl` is automatically appended.
 
