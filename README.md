@@ -171,7 +171,7 @@ __Smarty Element__
 
 2. The `data` array is where you'd pass variables from your view to your element. It is optional.
 
-> Consider this: Elements + Smarty template inheritance. You define a default element in the primary layout and wrap it in smarty `{block}`'s, then, later down the template change you add a different element, or update the params on the current element. __Powerful__!
+> __Consider this__: Elements + Smarty template inheritance. You define a default element in the primary layout and wrap it in smarty `{block}`'s, then, later down the template chain you add a different element, or update the params on the current element. __Powerful__!
 
 ## Collaborate
 As always, I welcome your collaboration to make things "even more betterer", so fork and contribute if you feel the need.
