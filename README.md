@@ -145,12 +145,14 @@ Again, since Smarty makes it impossible to use PHP in templates this means that 
 
 ### Element Usage
 
+Lets say you have a `menu` element, and you need to pass it user data. For the sake of this example we'll call the element file `menu.html.tpl` as it's an HTML/Smarty file.
+
 __Lithium Element__
 
 I assume you already know about elements, [they're enormously handy](http://lithify.me/docs/lithium/template).
 
 ~~~ php
-<?= $this->view()->render(array('element' => 'menu'), array('var1' => 'variable1')); ?>
+<?= $this->view()->render(array('element' => 'menu'), array('user' => $currentUser)); ?>
 ~~~
 
 __Smarty Element__
@@ -158,7 +160,7 @@ __Smarty Element__
 ~~~ html
 	...
 	<body>
-		{element file="menu" data=['var1' => 'variable1']}
+		{element file="menu" data=['user' => $currentUser]}
 	</body>
 	...
 ~~~
@@ -168,6 +170,8 @@ __Smarty Element__
 1. The `file` parameter is the name of the element, the file extension `.html.tpl` is automatically appended.
 
 2. The `data` array is where you'd pass variables from your view to your element. It is optional.
+
+> Consider this: Elements + Smarty template inheritance. You define a default element in the primary layout and wrap it in smarty `{block}`'s, then, later down the template change you add a different element, or update the params on the current element. __Powerful__!
 
 ## Collaborate
 As always, I welcome your collaboration to make things "even more betterer", so fork and contribute if you feel the need.
