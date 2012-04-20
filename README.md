@@ -97,6 +97,8 @@ I wont get into how or why you'd write these so check out the [smarty plugin doc
 ## Lithium Helpers
 This ... was tricky.
 
+Smarty disables your ability to use PHP in your views and no [longer supports an "escape" block function](http://www.smarty.net/docs/en/language.function.php.tpl) that allows you to add raw PHP, therefore extra effort was required to expose Lithium PHP view functionality to smarty.
+
 To lose lithium php helpers is the same as losing both feet and 4 fingers, including both thumbs ... I __HAD__ to come up with a way to expose helpers to smarty templates.
 
 I've written a smarty plugin, called `helper` which exposes all lithium helper methods to the smarty template.
@@ -137,6 +139,35 @@ I'm going to break the smarty helper method down for you
 > If you are passing in an array of options the key __must__ be called `options` for it to be used correctly by the smarty plugin
 
 That should do it, I've tested with a few different core helpers and it works as expected, please log an issue if a helper fails to work properly with this method and I'll attempt to add support as soon as possible.
+
+## Use Elements
+Again, since Smarty makes it impossible to use PHP in templates this means that in order to call Lithium `elements` for use a view powered by Smarty the element rendering methods needed to be exposed to smarty. Again, we do this by extending smarty thru a plugin function. 
+
+### Element Usage
+
+__Lithium Element__
+
+I assume you already know about elements, [they're enormously handy](http://lithify.me/docs/lithium/template).
+
+~~~ php
+<?= $this->view()->render(array('element' => 'menu'), array('var1' => 'variable1')); ?>
+~~~
+
+__Smarty Link Helper__
+
+~~~ html
+	...
+	<body>
+		{element file="menu" data=['var1' => 'variable1']}
+	</body>
+	...
+~~~
+
+### Some Notes
+
+1. The `file` parameter is the name of the element, the file extension `.html.tpl` is automatically appended.
+
+2. The `data` array is where you'd pass variables from your view to your element. It is optional.
 
 ## Collaborate
 As always, I welcome your collaboration to make things "even more betterer", so fork and contribute if you feel the need.
