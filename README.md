@@ -141,7 +141,7 @@ I'm going to break the smarty helper method down for you
 That should do it, I've tested with a few different core helpers and it works as expected, please log an issue if a helper fails to work properly with this method and I'll attempt to add support as soon as possible.
 
 ## Use Elements
-Again, since Smarty makes it impossible to use PHP in templates this means that in order to call Lithium `elements` for use a view powered by Smarty the element rendering methods needed to be exposed to smarty. Again, we do this by extending smarty thru a plugin function. 
+Again, since Smarty makes it impossible to use PHP in templates this means that in order to call Lithium `elements` for use in a view powered by Smarty the element rendering methods needed to be exposed to smarty. Again, we do this by extending smarty thru a plugin function. 
 
 ### Element Usage
 
