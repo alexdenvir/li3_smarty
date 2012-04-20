@@ -153,7 +153,7 @@ I assume you already know about elements, [they're enormously handy](http://lith
 <?= $this->view()->render(array('element' => 'menu'), array('var1' => 'variable1')); ?>
 ~~~
 
-__Smarty Link Helper__
+__Smarty Element__
 
 ~~~ html
 	...
