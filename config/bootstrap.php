@@ -4,23 +4,34 @@ use lithium\core\Libraries;
 use lithium\core\ConfigException;
 use lithium\template\View;
 use lithium\net\http\Media;
-use Smarty\template\view\adapter\Smarty;
+
+// Define path to plugin and other constants
+defined('SMARTY_VERSION') OR define('SMARTY_VERSION', '3.1.8'); // Allows us to test different versions without breaking things
+defined('LI3_SMARTY_PATH') OR define('LI3_SMARTY_PATH', dirname(__DIR__));
+defined('LI3_SMARTY_LIB') OR define('LI3_SMARTY_LIB', dirname(__DIR__) . "/libraries/Smarty/" . SMARTY_VERSION . "/libs/");
 
 Libraries::add('Smarty', array(
-            'path' => LITHIUM_LIBRARY_PATH . '/Smarty/_source/Smarty-3.1.8/libs',
-            'includePath' => true,
-            'bootstrap' => false
-        ));
-require_once("Smarty.class.php");
+    "path" => LI3_SMARTY_LIB,
+    "bootstrap" => "Smarty.class.php",
+));
 
-include(__DIR__ . "/../template/view/adapter/Smarty.php");
-
+/**
+ * Map to the new renderer
+ */
 Media::type('default', null, array(
-            'view' => '\lithium\template\View',
-            'renderer' => '\Smarty\template\view\adapter\Smarty',
-            'paths' => array(
-                'template' => '{:library}/views/{:controller}/{:template}.{:type}.tpl',
-                'layout' => '{:library}/views/layouts/{:layout}.{:type}.tpl'
-            )
-        ));
+    'view' => '\lithium\template\View',
+    'renderer' => '\li3_smarty\template\view\adapter\Smarty',
+    'paths' => array(
+        'template' => array(
+            LITHIUM_APP_PATH . '/views/{:controller}/{:template}.{:type}.tpl',
+            '{:library}/views/{:controller}/{:template}.{:type}.tpl',
+        ),
+        'element' => array(
+            LITHIUM_APP_PATH . '/views/elements/{:template}.html.tpl', 
+            '{:library}/views/elements/{:template}.html.tpl'
+        ),
+        'layout' => false
+    )
+));
+
 ?>
