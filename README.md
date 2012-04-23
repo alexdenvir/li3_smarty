@@ -1,12 +1,8 @@
 # [Smarty](http://www.smarty.net) PHP plugin for [Lithium PHP](http://lithify.me)
 Adds Smarty Templating Engine support to Lithium PHP Framework.
 
-I can't claim to be a fan of smarty, or php templating languages in general, but Smarty was a requirement from my employer.
-
-So, alas, here is a plugin to run lithium thru smarty properly.
-
 ## Installation
-1. Clone/Download the plugin into your app's ``libraries`` directory.
+1. Clone/Download the plugin into your app's ``libraries`` directory. (Even better, use it as a git submodule)
 2. Tell your app to load the plugin by adding the following to your app's ``config/bootstrap/libraries.php``:
 
         Libraries::add('li3_smarty');
@@ -175,6 +171,10 @@ __Smarty Element__
 
 ## Collaborate
 As always, I welcome your collaboration to make things "even more betterer", so fork and contribute if you feel the need.
+
+### Contributors
+Original plugin developed by [Alex Denvir](https://github.com/alexdenvir), inspired by the [li3_twig](http://rad-dev.org/li3_twig).
+Massive improvements made by [Josey Morton](https://github.com/joseym)
 
 ### New to Smarty?
 Documentation available at http://www.smarty.net/docs/en/
