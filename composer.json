@@ -21,9 +21,4 @@
 		"php": ">=5.3"
 	},
 
-	"autoload": {
-		"psr-0": { "": "/libraries" }
-	},
-
-	"target-dir": ""
 }

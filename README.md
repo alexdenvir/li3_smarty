@@ -30,6 +30,16 @@ git submodule update
 
 > This goes out and pulls all of the repos you have loaded into submodules. __Handy!__
 
+### Add it to Libraries
+
+Tell your app to load the plugin by adding the following to your app's ``config/bootstrap/libraries.php``:
+
+~~~ php
+<?php
+	Libraries::add('li3_smarty');
+?>
+~~~
+
 ### Composer
 #### This is new and Lithium doesn't yet have a packagist package (soon, hopefully)
 
@@ -47,13 +57,23 @@ Modify your projects `composer.json` file
 }
 ~~~
 
-This has similar benefits to submodules however with composer you don't need to know much about the plugin, just it's vendor name (`joseym`) and it's library name (`li3_smarty`) and what branch you want (`master`). Packagist handles the rest!
-
 ### Add it to Libraries
-
 Tell your app to load the plugin by adding the following to your app's ``config/bootstrap/libraries.php``:
 
-    Libraries::add('li3_smarty');
+You'll need to make one small modification if to how you add the libary if you choose to use composer:
+
+~~~ php
+<?php
+	Libraries::add('li3_smarty', array(
+		'path' => LITHIUM_APP_PATH . "/libraries/joseym/li3_smarty"
+	));
+?>
+~~~
+
+> You need to specify the library path because composer/packagist creates a structure inside of `libraries` like `vendor-name`/`package-name`, which means you'll need to tell lithium where the library is stored.
+> Hopefully either composer/packagist will add an option to override this or Lithium will adopt composer as it's package managment and automatically resolve this issue.
+
+This has similar benefits to submodules however with composer you don't need to know much about the plugin, just it's vendor name (`joseym`) and it's library name (`li3_smarty`) and what branch you want (`master`). Packagist handles the rest!
 
 ## Usage
 The plugin was written to mimic core Li3 variable assignment - therefore you can pass variables to your views like normal
