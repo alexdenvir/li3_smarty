@@ -1,0 +1,23 @@
+{
+	"name": "joseym/li3_smarty",
+	"description": "Smarty PHP plugin for Lithium PHP ... if you're into that sort of thing",
+	"keywords": ["template engine", "smarty", "lithium"],
+	"homepage": "https://github.com/joseym/li3_smarty",
+	"license": "GNU General Public License",
+	"authors": [
+		{
+			"name": "Josey Morton"",
+			"email": "me@joseymorton.com",
+			"homepage": "https://github.com/joseym"
+		},
+		{
+			"name": "Alex Denvir",
+			"email": "coldfff@gmail.com",
+			"homepage": "https://github.com/alexdenvir"
+		}
+	],
+
+	"require": {
+		"php": ">=5.3",
+	}
+}
