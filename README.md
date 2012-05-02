@@ -53,7 +53,7 @@ This has similar benefits to submodules however with composer you don't need to 
 
 Tell your app to load the plugin by adding the following to your app's ``config/bootstrap/libraries.php``:
 
-        Libraries::add('li3_smarty');
+    Libraries::add('li3_smarty');
 
 ## Usage
 The plugin was written to mimic core Li3 variable assignment - therefore you can pass variables to your views like normal
