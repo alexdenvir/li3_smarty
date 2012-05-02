@@ -6,8 +6,52 @@ I can't claim to be a fan of smarty, or php templating languages in general, but
 So, alas, here is a plugin to run lithium thru smarty properly.
 
 ## Installation
+There are several ways to grab and use this project:
+
+### Clone directly
 1. Clone/Download the plugin into your app's ``libraries`` directory.
-2. Tell your app to load the plugin by adding the following to your app's ``config/bootstrap/libraries.php``:
+
+2. This is great for development but will require you go to this directory and manually pull any future changes 
+
+### Create a Submodule
+1. In your app's ``libraries`` directory enter the following
+
+~~~ sh
+git submodule add https://github.com/joseym/li3_smarty.git li3_smarty
+~~~
+
+> You could add this in your app path as well, just make sure you tell it to place the submodule in `libraries/li3_smarty` rather than just `li3_smarty`.
+
+2. This is a great way to manage several plugins. If you add all of your libraries this way then you can stay up to date with all of them by running this command from your libraries directory (or wherever you created the submodule):
+
+~~~ sh
+git submodule update
+~~~
+
+> This goes out and pulls all of the repos you have loaded into submodules. __Handy!__
+
+### Composer
+#### This is new and Lithium doesn't yet have a packagist package (soon, hopefully)
+
+That doesn't have to keep us from using it! It just means that we may have to take an extra step or two in order to get Composer running with Lithium. [See this highly instructive article](http://nitschinger.at/Playing-with-Composer-and-Lithium) by [@daschl](https://github.com/daschl) and lets do our best to make Lithium as easy to use as possible!
+
+1. Modify your projects `composer.json` file
+
+~~~ json
+{
+    "require": {
+    	...
+        "joseym/li3_smarty": "master"
+        ...
+    }
+}
+~~~
+
+2. This has similar benefits to submodules however with composer you don't need to know much about the plugin, just it's vendor name (`joseym`) and it's library name (`li3_smarty`) and what branch you want (`master`). Packagist handles the rest!
+
+### Add it to Libraries
+
+1. Tell your app to load the plugin by adding the following to your app's ``config/bootstrap/libraries.php``:
 
         Libraries::add('li3_smarty');
 
