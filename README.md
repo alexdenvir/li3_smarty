@@ -2,10 +2,74 @@
 Adds Smarty Templating Engine support to Lithium PHP Framework.
 
 ## Installation
-1. Clone/Download the plugin into your app's ``libraries`` directory. (Even better, use it as a git submodule)
-2. Tell your app to load the plugin by adding the following to your app's ``config/bootstrap/libraries.php``:
+There are several ways to grab and use this project:
 
-        Libraries::add('li3_smarty');
+### Clone directly
+1. Clone/Download the plugin into your app's ``libraries`` directory.
+
+2. This is great for development but will require you go to this directory and manually pull any future changes 
+
+### Create a Submodule
+In your app's ``libraries`` directory enter the following
+
+~~~ sh
+git submodule add https://github.com/joseym/li3_smarty.git li3_smarty
+~~~
+
+> You could add this in your app path as well, just make sure you tell it to place the submodule in `libraries/li3_smarty` rather than just `li3_smarty`.
+
+This is a great way to manage several plugins. If you add all of your libraries this way then you can stay up to date with all of them by running this command from your libraries directory (or wherever you created the submodule):
+
+~~~ sh
+git submodule update
+~~~
+
+> This goes out and pulls all of the repos you have loaded into submodules. __Handy!__
+
+### Add it to Libraries
+
+Tell your app to load the plugin by adding the following to your app's ``config/bootstrap/libraries.php``:
+
+~~~ php
+<?php
+	Libraries::add('li3_smarty');
+?>
+~~~
+
+### Composer
+#### This is new and Lithium doesn't yet have a packagist package (soon, hopefully)
+
+That doesn't have to keep us from using it! It just means that we may have to take an extra step or two in order to get Composer running with Lithium. [See this highly instructive article](http://nitschinger.at/Playing-with-Composer-and-Lithium) by [@daschl](https://github.com/daschl) and lets do our best to make Lithium as easy to use as possible!
+
+Modify your projects `composer.json` file
+
+~~~ json
+{
+    "require": {
+    	...
+        "alexdenvir/li3_smarty": "master"
+        ...
+    }
+}
+~~~
+
+### Add it to Libraries
+Tell your app to load the plugin by adding the following to your app's ``config/bootstrap/libraries.php``:
+
+You'll need to make one small modification if to how you add the libary if you choose to use composer:
+
+~~~ php
+<?php
+	Libraries::add('li3_smarty', array(
+		'path' => LITHIUM_APP_PATH . "/libraries/alexdenvir/li3_smarty"
+	));
+?>
+~~~
+
+> You need to specify the library path because composer/packagist creates a structure inside of `libraries` like `vendor-name`/`package-name`, which means you'll need to tell lithium where the library is stored.
+> Hopefully either composer/packagist will add an option to override this or Lithium will adopt composer as it's package managment and automatically resolve this issue.
+
+This has similar benefits to submodules however with composer you don't need to know much about the plugin, just it's vendor name (`joseym`) and it's library name (`li3_smarty`) and what branch you want (`master`). Packagist handles the rest!
 
 ## Usage
 The plugin was written to mimic core Li3 variable assignment - therefore you can pass variables to your views like normal
