@@ -20,7 +20,7 @@
 
 	"require": {
 		"php": ">=5.3",
-		"joseym/li3_composer": "master"
+		"joseym/li3_installer": "master"
 	}
 
 }
