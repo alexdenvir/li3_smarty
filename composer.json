@@ -2,7 +2,7 @@
 	"name": "joseym/li3_smarty",
 	"type": "li3-libraries",
 	"description": "Smarty PHP plugin for Lithium PHP ... if you're into that sort of thing",
-	"keywords": ["template engine", "smarty", "lithium"],
+	"keywords": ["template engine", "smarty", "lithium", "li3"],
 	"homepage": "https://github.com/joseym/li3_smarty",
 	"license": "GNU General Public License",
 	"authors": [
