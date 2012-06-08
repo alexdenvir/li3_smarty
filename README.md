@@ -34,10 +34,27 @@ That doesn't have to keep us from using it! It just means that we may have to ta
 Modify your projects `composer.json` file
 
 ~~~ json
+"repositories": {
+    ...
+    "protecinnovations": {
+        "type": "package",
+        "package": {
+            "name": "li3_smarty",
+            "version": "master",
+            "source": {
+                "url": "git://github.com/protecinnovations/li3_smarty.git",
+                "type": "git",
+                "reference": "master"
+            }
+        }
+    }
+    ...
+},
+...
 {
     "require": {
-    	...
-        "alexdenvir/li3_smarty": "master"
+        ...
+        "li3_smarty": "master"
         ...
     }
 }
