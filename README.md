@@ -7,7 +7,7 @@ There are several ways to grab and use this project:
 ### Clone directly
 1. Clone/Download the plugin into your app's ``libraries`` directory.
 
-2. This is great for development but will require you go to this directory and manually pull any future changes 
+2. This is great for development but will require you go to this directory and manually pull any future changes
 
 ### Create a Submodule
 In your app's ``libraries`` directory enter the following
@@ -37,7 +37,7 @@ Modify your projects `composer.json` file
 {
     "require": {
     	...
-        "alexdenvir/li3_smarty": "master"
+        "joseym/li3_smarty": "master"
         ...
     }
 }
@@ -55,6 +55,28 @@ Tell your app to load the plugin by adding the following to your app's ``config/
 
 This has similar benefits to submodules however with composer you don't need to know much about the plugin, just it's vendor name (`joseym`) and it's library name (`li3_smarty`) and what branch you want (`master`). Packagist handles the rest!
 
+### Configuration
+
+Everything should be preconfigured to just work. However: should you feel the need to add additional template paths, or dump your compiled templates elsewhere, you can! Just pass an array of options to your Libraries::add call:
+
+
+~~~ php
+<?php
+        Libraries:add('li3_smarty', array(
+            'compile_dir' => PATH_TO_COMPILE_DIRECTORY,
+            'cache_dir' => PATH_TO_CACHE_DIRECTORY,
+            'template_dir' => array(
+                ADDITIONAL_TEMPLATE_DIRECTORY
+            ),
+            'plugin_dir' => array(
+                ADDITIONAL_PLUGIN_DIRECTORY
+            )
+        ));
+?>
+~~~
+
+> Note that the compile and cache directories need to be writable by your Apache (or whatever web server you use)
+
 ## Usage
 The plugin was written to mimic core Li3 variable assignment - therefore you can pass variables to your views like normal
 
@@ -63,7 +85,7 @@ The plugin was written to mimic core Li3 variable assignment - therefore you can
 __PagesController.php__
 
 ~~~ php
-<?php 
+<?php
 	...
 	class PagesController extends \lithium\action\Controller {
 
@@ -86,7 +108,7 @@ which will render "I want to display my `test variable!`"
 
 > You may have noticed that the view ended in .tpl, this is required for the plugin to parse the template as a smarty template.
 
-## Inheritance 
+## Inheritance
 Arguably one of the single most useful things smarty offers is its template inheritance.
 
 This plugin treats views as layouts, so your view will need to extend the proper layout in order for it to render properly.
@@ -185,7 +207,7 @@ I'm going to break the smarty helper method down for you
 That should do it, I've tested with a few different core helpers and it works as expected, please log an issue if a helper fails to work properly with this method and I'll attempt to add support as soon as possible.
 
 ## Use Elements
-Again, since Smarty makes it impossible to use PHP in templates this means that in order to call Lithium `elements` for use in a view powered by Smarty the element rendering methods needed to be exposed to smarty. Again, we do this by extending smarty thru a plugin function. 
+Again, since Smarty makes it impossible to use PHP in templates this means that in order to call Lithium `elements` for use in a view powered by Smarty the element rendering methods needed to be exposed to smarty. Again, we do this by extending smarty thru a plugin function.
 
 ### Element Usage
 
