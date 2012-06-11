@@ -18,9 +18,11 @@
 		// `$params` in terms of lithium requirements
 		extract($params, EXTR_OVERWRITE); unset($params['init']); unset($params['options']);
 
-		// ensure `$params` is a sequential array
-		$params = explode(',', implode(',', $params));
-		$params = !empty($params[0]) ? $params : false;
+		// ensure `$params` is in an array
+		if(is_string($params)){
+			$params = explode(',', implode(',', $params));
+			$params = !empty($params[0]) ? $params : false;
+		}
 
 		// Build init call to determine which helper class and method to use
 		$init = explode(':', $init);
